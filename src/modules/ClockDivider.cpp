@@ -125,11 +125,9 @@ struct ClockDivider : Module {
 				break;
 		}
 
-		//std::ostringstream  buffer;
 		for (int i = 0; i < NUM_DIVS; i++) {
-			//buffer.str("");
-			//buffer << "Divide by " << outputMask[m][i];
-			configOutput(DIV_OUTPUTS + i /*, buffer.str()*/ );
+			std::string buffer = "Divide by " + std::to_string(outputMask[m][i]);
+			configOutput(DIV_OUTPUTS + i, buffer);
 		}
 	}
 

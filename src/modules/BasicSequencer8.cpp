@@ -93,18 +93,16 @@ struct BasicSequencer8 : Module {
 		configSwitch(MODE_PARAM, 0.0f, 2.0, 0.0f, "Direction", {"Down", "Bi", "Up"});
 		
 		// step params (knobs and switches)
-		//std::ostringstream  buffer;
 		for (int s = 0; s < SEQ_NUM_STEPS; s++) {
 			configSwitch(STEP_SW_PARAMS + s, 0.0f, 2.0f, 1.0f, "Step", {"Gate", "Off", "Trigger"});
 			configSwitch(TRIGGER_PARAMS + s, 0.0f, 1.0f, 1.0f, rack::string::f("Step %d trigger select", s + 1), {"Off", "On"});
 			configSwitch(GATE_PARAMS + s, 0.0f, 1.0f, 0.0f, rack::string::f("Step %d gate select", s + 1), {"Off", "On"});
 			configParam(STEP_CV_PARAMS + s, 0.0f, 8.0f, 0.0f, "Step value");
-	//		buffer.str("");
-	//		buffer << "Length = " << s + 1;
-			configLight(LENGTH_LIGHTS + s /*, buffer.str()*/ );
-	//		buffer.str("");
-	//		buffer << "Step " << s +1 << " active";
-			configLight(STEP_LIGHTS + s /*, buffer.str()*/ );
+			std::string buffer;
+			buffer = "Length = " + std::to_string(s+1);
+			configLight(LENGTH_LIGHTS + s, buffer);
+			buffer = "Step " + std::to_string(s+1) + " active";
+			configLight(STEP_LIGHTS + s, buffer);
 		}
 		
 		// range switch

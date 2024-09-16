@@ -53,13 +53,11 @@ struct BinaryComparator : Module {
 	BinaryComparator() {
 		config(NUM_PARAMS, NUM_INPUTS, NUM_OUTPUTS, NUM_LIGHTS);
 	
-		//std::ostringstream  buffer;
 		for (int i = 0; i < 8 ; i++) {
-			//buffer.str("");
-			//buffer << "bit " << i;
-			configButton(BIT_PARAMS + i , "Manual "/* + buffer.str()*/ );
-			configInput(A_INPUTS + i, "A "/* + buffer.str()*/ );
-			configInput(B_INPUTS + i, "B "/* + buffer.str()*/ );
+			std::string buffer = "bit " + std::to_string(i);
+			configButton(BIT_PARAMS + i , "Manual " + buffer);
+			configInput(A_INPUTS + i, "A " + buffer);
+			configInput(B_INPUTS + i, "B " + buffer);
 		}
 
 		configOutput(LT_OUTPUT,"A < B");
