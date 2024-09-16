@@ -197,8 +197,14 @@ struct ClockDivider : Module {
 			int prevMode = mode;
 			mode = clamp((int)params[MODE_PARAM].getValue(), 0, maxModes);
 			
+#ifdef METAMODULE
+		// setOutputLabels() allocates dynamic memory and we must avoid that in the audio loop.
+		// Also, MM does not support dynamic renaming of elements
+			(void)prevMode;
+#else
 			if (mode != prevMode)
 				setOutputLabels();
+#endif
 		}
 		
 		// process the reset
