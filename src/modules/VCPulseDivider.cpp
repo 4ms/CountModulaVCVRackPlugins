@@ -37,6 +37,10 @@ struct VCPulseDivider : Module {
 		NUM_LIGHTS
 	};
 
+#if defined(METAMODULE)
+	static constexpr int ScreenId = NUM_LIGHTS;
+#endif
+
 	char lengthString[4];
 	GateProcessor gateClock;
 	GateProcessor gateReset;
@@ -141,6 +145,17 @@ struct VCPulseDivider : Module {
 		outputs[DIV1_OUTPUT].setVoltage(boolToGate(out1));
 		outputs[DIVN_OUTPUT].setVoltage(boolToGate(outN));
 	}
+
+#if defined(METAMODULE)
+	size_t get_display_text(int led_id, std::span<char> text) override {
+		if (led_id == ScreenId) {
+			int chars_written = snprintf(text.data(), text.size(), "%2d", length);
+			return chars_written < 0 ? 0: chars_written;
+		}
+		return 0;
+	}
+#endif
+
 };
 
 struct VCPulseDividerWidget : ModuleWidget {
@@ -179,6 +194,13 @@ struct VCPulseDividerWidget : ModuleWidget {
 		divDisplay = new CountModulaLEDDisplayLarge(2);
 		divDisplay->setCentredPos(Vec(STD_COLUMN_POSITIONS[STD_COL2], STD_ROWS6[STD_ROW1]));
 		divDisplay->setText(1);
+#ifdef METAMODULE
+		divDisplay->font = "Segment14_20";
+		divDisplay->color = RGB565{(uint8_t)0xff, 0x10, 0x10};
+		divDisplay->text = "1";
+		divDisplay->firstLightId = VCPulseDivider::ScreenId;
+#endif
+
 		addChild(divDisplay);
 		
 	}

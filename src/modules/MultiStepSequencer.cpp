@@ -148,6 +148,10 @@ struct STRUCT_NAME : Module {
 		EOC_LIGHT,
 		NUM_LIGHTS
 	};
+
+#if defined(METAMODULE)
+	static constexpr int ScreenId = NUM_LIGHTS;
+#endif
 	
 	enum Directions {
 		FORWARD,
@@ -622,6 +626,16 @@ struct STRUCT_NAME : Module {
 		
 		prevTrig = trig;
 	}
+
+#if defined(METAMODULE)
+	size_t get_display_text(int led_id, std::span<char> text) override {
+		if (led_id == ScreenId) {
+			int chars_written = snprintf(text.data(), text.size(), "%03d", length);
+			return chars_written < 0 ? 0: chars_written;
+		}
+		return 0;
+	}
+#endif
 };
 
 struct WIDGET_NAME : ModuleWidget {
@@ -700,6 +714,13 @@ struct WIDGET_NAME : ModuleWidget {
 		ledLength = new CountModulaLEDDisplayMedium(3);
 		ledLength->setCentredPos(Vec(STD_COLUMN_POSITIONS[STD_COL2], STD_ROWS8[STD_ROW3] - 6));
 		ledLength->setText(8);
+#ifdef METAMODULE
+		ledLength->font = "Segment14_20";
+		ledLength->color = RGB565{(uint8_t)0xff, 0x10, 0x10};
+		ledLength->text = "000";
+		ledLength->box.size = Vec{70, 26};
+		ledLength->firstLightId = MultiStepSequencer::ScreenId;
+#endif
 		addChild(ledLength);
 		
 	}

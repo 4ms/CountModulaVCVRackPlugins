@@ -10,8 +10,16 @@ using namespace rack;
 //-------------------------------------------------------------------
 // LED Display Base
 //-------------------------------------------------------------------
+#ifdef METAMODULE
+
+struct CountModulaLEDDisplay : MetaModule::VCVTextDisplay {
+
+#else
+
 struct CountModulaLEDDisplay : ModuleLightWidget {
 	std::shared_ptr<Font> font;
+
+#endif
 	std::string text;
 	float fontSize;
 	Vec textPos;
@@ -83,6 +91,7 @@ struct CountModulaLEDDisplay : ModuleLightWidget {
 	}
 	
 	void drawLight(const DrawArgs &args) override {
+#if !defined(METAMODULE)
 		char buffer[numChars+1];
 		int l = text.size();
 		if (l > numChars)
@@ -120,6 +129,7 @@ struct CountModulaLEDDisplay : ModuleLightWidget {
 			nvgFillColor(args.vg, textColor);
 			nvgText(args.vg, textPos.x, textPos.y, buffer, NULL);
 		}
+#endif
 	}
 };
 
