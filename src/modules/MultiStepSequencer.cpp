@@ -150,7 +150,9 @@ struct STRUCT_NAME : Module {
 	};
 
 #if defined(METAMODULE)
-	static constexpr int ScreenId = NUM_LIGHTS;
+	enum DisplayIds {
+		ScreenId = NUM_LIGHTS
+	}; 
 #endif
 	
 	enum Directions {
@@ -630,7 +632,8 @@ struct STRUCT_NAME : Module {
 #if defined(METAMODULE)
 	size_t get_display_text(int led_id, std::span<char> text) override {
 		if (led_id == ScreenId) {
-			int chars_written = snprintf(text.data(), text.size(), "%03d", length);
+			auto len = calculateLength();
+			int chars_written = snprintf(text.data(), text.size(), "%03d", len);
 			return chars_written < 0 ? 0: chars_written;
 		}
 		return 0;
