@@ -38,7 +38,9 @@ struct VCPulseDivider : Module {
 	};
 
 #if defined(METAMODULE)
-	static constexpr int ScreenId = NUM_LIGHTS;
+	enum DisplayIds {
+		ScreenId = NUM_LIGHTS
+	};
 #endif
 
 	char lengthString[4];
@@ -195,10 +197,12 @@ struct VCPulseDividerWidget : ModuleWidget {
 		divDisplay->setCentredPos(Vec(STD_COLUMN_POSITIONS[STD_COL2], STD_ROWS6[STD_ROW1]));
 		divDisplay->setText(1);
 #ifdef METAMODULE
-		divDisplay->font = "Segment14_20";
+		divDisplay->font = "Segment14_24";
 		divDisplay->color = RGB565{(uint8_t)0xff, 0x10, 0x10};
 		divDisplay->text = "1";
 		divDisplay->firstLightId = VCPulseDivider::ScreenId;
+		divDisplay->box.pos.x += mm2px(2);
+		divDisplay->box.pos.y += mm2px(2);
 #endif
 
 		addChild(divDisplay);
