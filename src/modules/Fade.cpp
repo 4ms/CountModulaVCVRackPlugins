@@ -63,6 +63,14 @@ struct Fade : Module {
 		STARTSTOP_MODE,
 		NUM_CONTROL_MODES
 	};
+
+#if defined(METAMODULE)
+    enum DisplayIds {
+      ScreenH = NUM_LIGHTS,
+      ScreenM,
+      ScreenS,
+    };
+#endif
 	
 	float mute = 0.0f;
 	float lastMute = 0.0f;
@@ -382,6 +390,27 @@ struct Fade : Module {
 			}
 		}	
 	}
+
+#if defined(METAMODULE)
+    size_t get_display_text(int led_id, std::span<char> text) override {
+        auto t = 0;
+        switch (led_id) {
+        case ScreenH:
+          t = hDisplay;
+          break;
+        case ScreenM:
+          t = mDisplay;
+          break;
+        case ScreenS:
+          t = sDisplay;
+          break;
+        default:
+          break;
+        }
+        const auto chars_written = snprintf(text.data(), text.size(), "%02d", t);
+        return chars_written < 0 ? 0 : chars_written;
+    }
+#endif
 };
 
 struct FadeWidget : ModuleWidget {
@@ -437,20 +466,42 @@ struct FadeWidget : ModuleWidget {
 		hDisplay = new CountModulaLEDDisplayMini2();
 		hDisplay->setCentredPos(Vec(STD_COLUMN_POSITIONS[STD_COL1], STD_ROWS6[STD_ROW5] - 10));
 		hDisplay->text = "00";
-		addChild(hDisplay);
+#ifdef METAMODULE
+        hDisplay->setCentredPos(
+            Vec(STD_COLUMN_POSITIONS[STD_COL1] - 4, STD_ROWS6[STD_ROW5] - 10));
+        hDisplay->font = "Segment14_14";
+        hDisplay->color = RGB565{(uint8_t)0xff, 0x10, 0x10};
+        hDisplay->box.size = Vec{34, 26};
+        hDisplay->firstLightId = Fade::ScreenH;
+#endif
+        addChild(hDisplay);
 
-		mDisplay = new CountModulaLEDDisplayMini2();
-		mDisplay->setCentredPos(Vec(STD_COLUMN_POSITIONS[STD_COL2], STD_ROWS6[STD_ROW5] - 10));
-		mDisplay->text = "00";
-		addChild(mDisplay);
+        mDisplay = new CountModulaLEDDisplayMini2();
+        mDisplay->setCentredPos(
+            Vec(STD_COLUMN_POSITIONS[STD_COL2], STD_ROWS6[STD_ROW5] - 10));
+        mDisplay->text = "00";
+#ifdef METAMODULE
+        mDisplay->font = "Segment14_14";
+        mDisplay->color = RGB565{(uint8_t)0xff, 0x10, 0x10};
+        mDisplay->box.size = Vec{34, 26};
+        mDisplay->firstLightId = Fade::ScreenM;
+#endif
+        addChild(mDisplay);
 
-		sDisplay = new CountModulaLEDDisplayMini2();
-		sDisplay->setCentredPos(Vec(STD_COLUMN_POSITIONS[STD_COL3], STD_ROWS6[STD_ROW5] - 10));
-		sDisplay->text = "00";
-		addChild(sDisplay);
-		
-	}
-	
+        sDisplay = new CountModulaLEDDisplayMini2();
+        sDisplay->setCentredPos(
+            Vec(STD_COLUMN_POSITIONS[STD_COL3], STD_ROWS6[STD_ROW5] - 10));
+        sDisplay->text = "00";
+#ifdef METAMODULE
+        sDisplay->setCentredPos(
+            Vec(STD_COLUMN_POSITIONS[STD_COL3] + 4, STD_ROWS6[STD_ROW5] - 10));
+        sDisplay->font = "Segment14_14";
+        sDisplay->color = RGB565{(uint8_t)0xff, 0x10, 0x10};
+        sDisplay->box.size = Vec{34, 26};
+        sDisplay->firstLightId = Fade::ScreenS;
+#endif
+        addChild(sDisplay);
+    }
 	//---------------------------------------------------------------------------------------------
 	// Control input mode menu
 	//---------------------------------------------------------------------------------------------
