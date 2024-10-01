@@ -368,6 +368,7 @@ struct WIDGET_NAME : ModuleWidget {
         divDisplay->font = "Segment14_24";
         divDisplay->color = RGB565{(uint8_t)0xff, 0x10, 0x10};
         divDisplay->box.size = Vec{35 * NUM_DIGITS, 36};
+        divDisplay->box.pos += Vec{2, 3};
         divDisplay->firstLightId = STRUCT_NAME::DisplayId;
 #endif
 		addChild(divDisplay);
