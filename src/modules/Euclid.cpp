@@ -62,6 +62,15 @@ struct Euclid : Module {
 		NUM_LIGHTS
 	};
 	
+#if defined(METAMODULE)
+    static constexpr auto display_offset = NUM_LIGHTS - HTRIG_LIGHT + EUCLID_SEQ_MAX_LEN;
+    enum DisplayIds {
+      DisplayLength = display_offset,
+      DisplayHits,
+      DisplayShifts,
+    };
+#endif
+
 	enum shiftSources {
 		CV_SHIFT_MODE,
 		MANUAL_SHIFT_MODE,
@@ -467,6 +476,26 @@ struct Euclid : Module {
 			}
 		}
 	}
+
+#if defined(METAMODULE)
+    size_t get_display_text(int led_id, std::span<char> text) override {
+        auto t = 0;
+        switch (led_id) {
+        case DisplayHits:
+          t = displayHits;
+          break;
+        case DisplayLength:
+          t = displayLength;
+          break;
+        case DisplayShifts:
+        default:
+          t = displayShift;
+          break;
+        }
+        const auto chars_written = snprintf(text.data(), text.size(), "%02d", t);
+        return chars_written < 0 ? 0 : chars_written;
+    }
+#endif
 };
 
 struct EuclidWidget : ModuleWidget {
@@ -547,16 +576,40 @@ struct EuclidWidget : ModuleWidget {
 		lengthDisplay = new CountModulaLEDDisplayMini2();
 		lengthDisplay->setCentredPos(Vec(STD_COLUMN_POSITIONS[STD_COL7], STD_ROWS6[STD_ROW1]));
 		lengthDisplay->text = "08";
+#ifdef METAMODULE
+        lengthDisplay->setCentredPos(
+            Vec(STD_COLUMN_POSITIONS[STD_COL7] - 4, STD_ROWS6[STD_ROW1]));
+        lengthDisplay->font = "Segment14_14";
+        lengthDisplay->color = RGB565{(uint8_t)0xff, 0x10, 0x10};
+        lengthDisplay->box.size = Vec{34, 26};
+        lengthDisplay->firstLightId = Euclid::DisplayLength;
+#endif
 		addChild(lengthDisplay);
 
 		hitsDisplay = new CountModulaLEDDisplayMini2();
 		hitsDisplay->setCentredPos(Vec(STD_COLUMN_POSITIONS[STD_COL8], STD_ROWS6[STD_ROW1]));
 		hitsDisplay->text = "04";
+#ifdef METAMODULE
+        hitsDisplay->setCentredPos(
+            Vec(STD_COLUMN_POSITIONS[STD_COL8] + 1, STD_ROWS6[STD_ROW1]));
+        hitsDisplay->font = "Segment14_14";
+        hitsDisplay->color = RGB565{(uint8_t)0xff, 0x10, 0x10};
+        hitsDisplay->box.size = Vec{34, 26};
+        hitsDisplay->firstLightId = Euclid::DisplayHits;
+#endif
 		addChild(hitsDisplay);
 
 		shiftDisplay = new CountModulaLEDDisplayMini2();
 		shiftDisplay->setCentredPos(Vec(STD_COLUMN_POSITIONS[STD_COL9], STD_ROWS6[STD_ROW1]));
 		shiftDisplay->text = "00";
+#ifdef METAMODULE
+        shiftDisplay->setCentredPos(
+            Vec(STD_COLUMN_POSITIONS[STD_COL9] + 6, STD_ROWS6[STD_ROW1]));
+        shiftDisplay->font = "Segment14_14";
+        shiftDisplay->color = RGB565{(uint8_t)0xff, 0x10, 0x10};
+        shiftDisplay->box.size = Vec{34, 26};
+        shiftDisplay->firstLightId = Euclid::DisplayShifts;
+#endif
 		addChild(shiftDisplay);
 	}
 	
