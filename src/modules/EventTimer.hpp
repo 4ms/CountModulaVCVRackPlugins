@@ -34,6 +34,9 @@ struct STRUCT_NAME : Module {
 		RETRIGGER_LIGHT,
 		NUM_LIGHTS
 	};
+	enum DisplayIds {
+		DisplayId = NUM_LIGHTS,
+	};
 
 	GateProcessor gpTrigger;
 	GateProcessor gpClock;
@@ -296,6 +299,16 @@ struct STRUCT_NAME : Module {
 		// and finally the clock indicator`
 		lights[CLOCK_LIGHT].setBrightness(boolToLight(clock));
 	}
+
+#if defined(METAMODULE)
+    size_t get_display_text(int led_id, std::span<char> text) override {
+        if (led_id != DisplayId) 
+            return 0;
+		const auto format = rack::string::f("%c%02dd", '%', NUM_DIGITS);
+        const auto chars_written = snprintf(text.data(), text.size(), format.c_str(), displayCount);
+        return chars_written < 0 ? 0 : chars_written;
+    }
+#endif
 };
 
 struct WIDGET_NAME : ModuleWidget {
@@ -350,6 +363,13 @@ struct WIDGET_NAME : ModuleWidget {
 		divDisplay = new CountModulaLEDDisplayLarge(NUM_DIGITS);
 		divDisplay->setCentredPos(Vec(box.size.x/2, STD_HALF_ROWS6(STD_ROW1)));
 		divDisplay->setText(0);
+#ifdef METAMODULE
+		divDisplay->setCentredPos(Vec(box.size.x/2, STD_HALF_ROWS6(STD_ROW1) + 2));
+        divDisplay->font = "Segment14_24";
+        divDisplay->color = RGB565{(uint8_t)0xff, 0x10, 0x10};
+        divDisplay->box.size = Vec{35 * NUM_DIGITS, 36};
+        divDisplay->firstLightId = STRUCT_NAME::DisplayId;
+#endif
 		addChild(divDisplay);
 		
 	}
