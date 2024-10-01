@@ -197,7 +197,7 @@ struct VCPulseDividerWidget : ModuleWidget {
 		divDisplay->setCentredPos(Vec(STD_COLUMN_POSITIONS[STD_COL2], STD_ROWS6[STD_ROW1]));
 		divDisplay->setText(1);
 #ifdef METAMODULE
-		divDisplay->font = "Segment14_24";
+		divDisplay->font = "Segment7Standard_24";
 		divDisplay->color = RGB565{(uint8_t)0xff, 0x10, 0x10};
 		divDisplay->text = "1";
 		divDisplay->firstLightId = VCPulseDivider::ScreenId;

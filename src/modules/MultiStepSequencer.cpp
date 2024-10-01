@@ -718,7 +718,7 @@ struct WIDGET_NAME : ModuleWidget {
 		ledLength->setCentredPos(Vec(STD_COLUMN_POSITIONS[STD_COL2], STD_ROWS8[STD_ROW3] - 6));
 		ledLength->setText(8);
 #ifdef METAMODULE
-		ledLength->font = "Segment14_20";
+		ledLength->font = "Segment7Standard_20";
 		ledLength->color = RGB565{(uint8_t)0xff, 0x10, 0x10};
 		ledLength->text = "000";
 		ledLength->box.size = Vec{70, 26};

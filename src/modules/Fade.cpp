@@ -469,7 +469,7 @@ struct FadeWidget : ModuleWidget {
 #ifdef METAMODULE
         hDisplay->setCentredPos(
             Vec(STD_COLUMN_POSITIONS[STD_COL1] - 4, STD_ROWS6[STD_ROW5] - 10));
-        hDisplay->font = "Segment14_14";
+        hDisplay->font = "SegmentStandard7_14";
         hDisplay->color = RGB565{(uint8_t)0xff, 0x10, 0x10};
         hDisplay->box.size = Vec{34, 26};
         hDisplay->firstLightId = Fade::DisplayH;
@@ -481,7 +481,7 @@ struct FadeWidget : ModuleWidget {
             Vec(STD_COLUMN_POSITIONS[STD_COL2], STD_ROWS6[STD_ROW5] - 10));
         mDisplay->text = "00";
 #ifdef METAMODULE
-        mDisplay->font = "Segment14_14";
+        mDisplay->font = "SegmentStandard7_14";
         mDisplay->color = RGB565{(uint8_t)0xff, 0x10, 0x10};
         mDisplay->box.size = Vec{34, 26};
         mDisplay->firstLightId = Fade::DisplayM;
@@ -495,7 +495,7 @@ struct FadeWidget : ModuleWidget {
 #ifdef METAMODULE
         sDisplay->setCentredPos(
             Vec(STD_COLUMN_POSITIONS[STD_COL3] + 4, STD_ROWS6[STD_ROW5] - 10));
-        sDisplay->font = "Segment14_14";
+        sDisplay->font = "SegmentStandard7_14";
         sDisplay->color = RGB565{(uint8_t)0xff, 0x10, 0x10};
         sDisplay->box.size = Vec{34, 26};
         sDisplay->firstLightId = Fade::DisplayS;

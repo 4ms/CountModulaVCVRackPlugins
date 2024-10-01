@@ -579,7 +579,7 @@ struct EuclidWidget : ModuleWidget {
 #ifdef METAMODULE
         lengthDisplay->setCentredPos(
             Vec(STD_COLUMN_POSITIONS[STD_COL7] - 4, STD_ROWS6[STD_ROW1]));
-        lengthDisplay->font = "Segment14_14";
+        lengthDisplay->font = "Segment7Standard_14";
         lengthDisplay->color = RGB565{(uint8_t)0xff, 0x10, 0x10};
         lengthDisplay->box.size = Vec{34, 26};
         lengthDisplay->firstLightId = Euclid::DisplayLength;
@@ -592,7 +592,7 @@ struct EuclidWidget : ModuleWidget {
 #ifdef METAMODULE
         hitsDisplay->setCentredPos(
             Vec(STD_COLUMN_POSITIONS[STD_COL8] + 1, STD_ROWS6[STD_ROW1]));
-        hitsDisplay->font = "Segment14_14";
+        hitsDisplay->font = "Segment7Standard_14";
         hitsDisplay->color = RGB565{(uint8_t)0xff, 0x10, 0x10};
         hitsDisplay->box.size = Vec{34, 26};
         hitsDisplay->firstLightId = Euclid::DisplayHits;
@@ -605,7 +605,7 @@ struct EuclidWidget : ModuleWidget {
 #ifdef METAMODULE
         shiftDisplay->setCentredPos(
             Vec(STD_COLUMN_POSITIONS[STD_COL9] + 6, STD_ROWS6[STD_ROW1]));
-        shiftDisplay->font = "Segment14_14";
+        shiftDisplay->font = "Segment7Standard_14";
         shiftDisplay->color = RGB565{(uint8_t)0xff, 0x10, 0x10};
         shiftDisplay->box.size = Vec{34, 26};
         shiftDisplay->firstLightId = Euclid::DisplayShifts;
