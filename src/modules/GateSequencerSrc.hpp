@@ -565,15 +565,15 @@ struct WIDGET_NAME : ModuleWidget {
 		
 		void onAction(const event::Action &e) override {
 			// text for history menu item
-			std::ostringstream  buffer;
-			buffer << "channel " << channel + 1 << " " << string::lowercase(text);
+			std::string  buffer;
+			buffer = "channel " + std::to_string(channel + 1) + " " + string::lowercase(text);
 			
 			// history - current settings
 			history::ModuleChange *h = new history::ModuleChange;
-			h->name = buffer.str();
+			h->name = buffer;
 			h->moduleId = widget->module->id;
 			h->oldModuleJ = widget->toJson();
-			
+
 			for (int c = 0; c < GATESEQ_NUM_STEPS; c++) {
 				widget->getParam(STRUCT_NAME::STEP_PARAMS + (channel * GATESEQ_NUM_STEPS) + c)->getParamQuantity()->setValue(pattern[c] ? 1.0f : 0.0f);
 			}
