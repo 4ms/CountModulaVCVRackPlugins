@@ -158,6 +158,10 @@ struct BinarySequencerPlus : Module {
 	}
 
 	void setParamLabels(bool configure) {
+#ifdef METAMODULE
+		if (!configure)
+			return;
+#endif
 		// need to wrangle the mode a little where we are in B1 as the output mask works differently
 		int m = 1;
 		switch (mode) {
@@ -469,7 +473,13 @@ struct BinarySequencerPlusWidget : ModuleWidget {
 		h->oldModuleJ = this->toJson();
 	
 		for (int i = 0; i < NUM_DIVS; i ++) {
+#ifdef METAMODULE
+			if (module) {
+				module->getParam(BinarySequencerPlus::DIV_PARAMS + i).setValue(0.f);
+			}
+#else
 			this->getParam(BinarySequencerPlus::DIV_PARAMS + i)->getParamQuantity()->reset();
+#endif
 		}
 
 		// history - new settings
@@ -485,7 +495,14 @@ struct BinarySequencerPlusWidget : ModuleWidget {
 		h->oldModuleJ = this->toJson();
 	
 		for (int i = 0; i < NUM_DIVS; i ++) {
+#ifdef METAMODULE
+			if (module) {
+				float val = std::rand() / (float)RAND_MAX;
+				module->getParam(BinarySequencerPlus::DIV_PARAMS + i).setValue(val * 20.f - 10.f);
+			}
+#else
 			this->getParam(BinarySequencerPlus::DIV_PARAMS + i)->getParamQuantity()->randomize();
+#endif
 		}
 
 		// history - new settings
