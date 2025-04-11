@@ -553,12 +553,20 @@ struct EuclidWidget : ModuleWidget {
 		addChild(lengthDisplay);
 
 		hitsDisplay = new CountModulaLEDDisplayMini2();
+#ifdef METAMODULE
+		hitsDisplay->setCentredPos(Vec(STD_COLUMN_POSITIONS[STD_COL8] + 4, STD_ROWS6[STD_ROW1]));
+#else
 		hitsDisplay->setCentredPos(Vec(STD_COLUMN_POSITIONS[STD_COL8], STD_ROWS6[STD_ROW1]));
+#endif
 		hitsDisplay->text = "04";
 		addChild(hitsDisplay);
 
 		shiftDisplay = new CountModulaLEDDisplayMini2();
+#ifdef METAMODULE
+		shiftDisplay->setCentredPos(Vec(STD_COLUMN_POSITIONS[STD_COL9] + 8, STD_ROWS6[STD_ROW1]));
+#else
 		shiftDisplay->setCentredPos(Vec(STD_COLUMN_POSITIONS[STD_COL9], STD_ROWS6[STD_ROW1]));
+#endif
 		shiftDisplay->text = "00";
 		addChild(shiftDisplay);
 	}

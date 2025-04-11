@@ -62,9 +62,15 @@ struct CountModulaLEDDisplay : ModuleLightWidget {
 				textColor = nvgRGB(0x09, 0x86, 0xdd);
 				break;
 			default:
+#ifdef METAMODULE
+				backgroundColor = nvgRGB(0x00, 0x00, 0x00);
+				borderColor = nvgRGB(0x00, 0x00, 0x00);	
+				textColor = nvgRGB(0xff, 0x40, 0x40);				
+#else
 				backgroundColor = nvgRGB(0x24, 0x14, 0x14);
 				borderColor = nvgRGB(0x10, 0x10, 0x10);	
 				textColor = nvgRGB(0xff, 0x10, 0x10);				
+#endif
 				break;
 		}
 	}
@@ -104,21 +110,32 @@ struct CountModulaLEDDisplay : ModuleLightWidget {
 		nvgStrokeColor(args.vg, borderColor);
 		nvgStroke(args.vg);
 
+#ifdef METAMODULE
+		font = APP->window->loadFont("4ms/fonts/Segment7Standard.ttf");
+#else
 		font = APP->window->loadFont(asset::plugin(pluginInstance, "res/fonts/Segment14.ttf"));
+#endif
 		if (font  && font->handle >= 0) {
 			nvgFontSize(args.vg, fontSize);
 			nvgFontFaceId(args.vg, font->handle);
-			nvgTextLetterSpacing(args.vg, 1);
+			nvgTextLetterSpacing(args.vg, 3);
 
 			// NVGcolor textColor = nvgRGB(0xff, 0x10, 0x10);
 			
+#ifdef METAMODULE
+			// render only the "on segments", and shift up a tiny bit
+			nvgFillColor(args.vg, textColor);
+			nvgText(args.vg, textPos.x, textPos.y + (fontSize * 0.1f), buffer, NULL);
+#else
 			// render the "off" segments 	
 			nvgFillColor(args.vg, nvgTransRGBA(textColor, 18));
 			nvgText(args.vg, textPos.x, textPos.y, "~~", NULL);
-			
+				
 			// render the "on segments"
 			nvgFillColor(args.vg, textColor);
 			nvgText(args.vg, textPos.x, textPos.y, buffer, NULL);
+#endif
+			
 		}
 	}
 };
@@ -146,7 +163,11 @@ struct CountModulaLEDDisplayLarge : CountModulaLEDDisplay {
 	
 	CountModulaLEDDisplayLarge(int digits) {
 		numChars = digits;
+#ifdef METAMODULE
+		fontSize = 34;
+#else
 		fontSize = 28;
+#endif
 		box.size = Vec(digits * 25, 40);
 		textPos = Vec(3, 34);
 		format = rack::string::f("%c%02dd", '%', digits);
@@ -163,7 +184,11 @@ struct CountModulaLEDDisplayMedium : CountModulaLEDDisplay {
 	
 	CountModulaLEDDisplayMedium(int digits) {
 		numChars = digits;
+#ifdef METAMODULE
+		fontSize = 24;
+#else
 		fontSize = 20;
+#endif
 		box.size = Vec(digits * 19.4, 26);
 		textPos = Vec(4, 23);
 		format = rack::string::f("%c%02dd", '%', digits);
@@ -195,7 +220,11 @@ struct CountModulaLEDDisplaySmall : CountModulaLEDDisplay {
 struct CountModulaLEDDisplayMini2 : CountModulaLEDDisplay {
 	CountModulaLEDDisplayMini2() {
 		numChars = 2;
+#ifdef METAMODULE
+		fontSize = 17;
+#else
 		fontSize = 14;
+#endif
 		box.size = Vec(25, 20);
 		textPos = Vec(1, 17);
 		setColorScheme(0);
