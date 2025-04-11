@@ -5,7 +5,9 @@
 
 // Add all Models defined throughout the plugin
 p->addModel(modelAnalogueShiftRegister);	
+#ifndef METAMODULE
 p->addModel(modelArpeggiator);	
+#endif
 p->addModel(modelAttenuator);	
 p->addModel(modelAttenuverter);	
 p->addModel(modelBarGraph);	
@@ -13,6 +15,7 @@ p->addModel(modelBasicSequencer8);
 p->addModel(modelBinaryComparator);	
 p->addModel(modelBinarySequencer);	
 p->addModel(modelBinarySequencerPlus);	
+#ifndef METAMODULE
 p->addModel(modelBlank12HP);	
 p->addModel(modelBlank16HP);	
 p->addModel(modelBlank20HP);	
@@ -20,11 +23,14 @@ p->addModel(modelBlank24HP);
 p->addModel(modelBlank2HP);	
 p->addModel(modelBlank4HP);	
 p->addModel(modelBlank8HP);	
+#endif
 p->addModel(modelBooleanAND);	
 p->addModel(modelBooleanOR);	
 p->addModel(modelBooleanVCNOT);	
 p->addModel(modelBooleanXOR);	
+#ifndef METAMODULE
 p->addModel(modelBreakout);	
+#endif
 p->addModel(modelBurstGenerator);	
 p->addModel(modelBurstGenerator64);	
 p->addModel(modelBusRoute);	
@@ -32,19 +38,25 @@ p->addModel(modelBusRoute2);
 p->addModel(modelCarousel);	
 p->addModel(modelChances);	
 p->addModel(modelClockDivider);	
+#ifndef METAMODULE
 p->addModel(modelClockedRandomGateExpanderCV);	
 p->addModel(modelClockedRandomGateExpanderLog);	
+#endif
 p->addModel(modelClockedRandomGates);	
 p->addModel(modelComparator);	
 p->addModel(modelCVSpreader);	
 p->addModel(modelGateSequencer16b);	
 p->addModel(modelEuclid);	
+#ifndef METAMODULE
 p->addModel(modelEuclidExpanderCV);	
+#endif
 p->addModel(modelEventArranger);	
 p->addModel(modelEventTimer);	
 p->addModel(modelEventTimer2);	
 p->addModel(modelFade);	
+#ifndef METAMODULE
 p->addModel(modelFadeExpander);	
+#endif
 p->addModel(modelG2T);	
 p->addModel(modelGatedComparator);	
 p->addModel(modelGateDelay);	
@@ -52,9 +64,11 @@ p->addModel(modelGateDelayMT);
 p->addModel(modelGateModifier);	
 p->addModel(modelGateSequencer16);	
 p->addModel(modelGateSequencer8);	
+#ifndef METAMODULE
 p->addModel(modelHyperManiacalLFO);	
 p->addModel(modelHyperManiacalLFOExpander);	
 p->addModel(modelLightStrip);	
+#endif
 p->addModel(modelMangler);	
 p->addModel(modelManifold);	
 p->addModel(modelManualCV);	
@@ -63,7 +77,9 @@ p->addModel(modelManualGate);
 p->addModel(modelMasterReset);	
 p->addModel(modelMatrixCombiner);	
 p->addModel(modelMatrixMixer);	
+#ifndef METAMODULE
 p->addModel(modelMegalomaniac);	
+#endif
 p->addModel(modelMiniMix);	
 p->addModel(modelMinimusMaximus);	
 p->addModel(modelMixer);	
@@ -75,10 +91,13 @@ p->addModel(modelMute);
 p->addModel(modelMuteIple);	
 p->addModel(modelNibbleTriggerSequencer);	
 p->addModel(modelOctetTriggerSequencer);	
+#ifndef METAMODULE
 p->addModel(modelOctetTriggerSequencerCVExpander);	
 p->addModel(modelOctetTriggerSequencerGateExpander);	
+#endif
 p->addModel(modelOffsetGenerator);	
 p->addModel(modelOscilloscope);	
+#ifndef METAMODULE
 p->addModel(modelPalette);	
 p->addModel(modelPolyChances);	
 p->addModel(modelPolyG2T);	
@@ -87,11 +106,14 @@ p->addModel(modelPolyLogic);
 p->addModel(modelPolyMinMax);	
 p->addModel(modelPolyMute);	
 p->addModel(modelPolyrhythmicGenerator);	
+#endif
 p->addModel(modelPolyrhythmicGeneratorMkII);	
+#ifndef METAMODULE
 p->addModel(modelPolyVCPolarizer);	
 p->addModel(modelPolyVCSwitch);	
 p->addModel(modelRackEarLeft);	
 p->addModel(modelRackEarRight);	
+#endif
 p->addModel(modelRandomAccessSwitch18);
 p->addModel(modelRandomAccessSwitch81);
 p->addModel(modelRectifier);	
@@ -101,6 +123,7 @@ p->addModel(modelSequenceEncoder);
 p->addModel(modelSequencer16);	
 p->addModel(modelSequencer64);
 p->addModel(modelSequencer8);	
+#ifndef METAMODULE
 p->addModel(modelSequencerChannel16);	
 p->addModel(modelSequencerChannel8);	
 p->addModel(modelSequencerExpanderCV8);	
@@ -113,6 +136,7 @@ p->addModel(modelSequencerGates16);
 p->addModel(modelSequencerGates8);	
 p->addModel(modelSequencerTriggers16);	
 p->addModel(modelSequencerTriggers8);	
+#endif
 p->addModel(modelShepardGenerator);	
 p->addModel(modelShiftRegister16);	
 p->addModel(modelShiftRegister32);	
@@ -135,7 +159,9 @@ p->addModel(modelSwitch8To1);
 p->addModel(modelTFlipFlop);	
 p->addModel(modelTriggerSequencer16);	
 p->addModel(modelTriggerSequencer8);	
+#ifndef METAMODULE
 p->addModel(modelVCFrequencyDivider);	
+#endif
 p->addModel(modelVCFrequencyDividerMkII);	
 p->addModel(modelVCPolarizer);	
 p->addModel(modelVCPulseDivider);	

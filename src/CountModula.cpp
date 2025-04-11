@@ -5,12 +5,21 @@
 
 #include "CountModula.hpp"
 
-Plugin *pluginInstance;
 int defaultTheme = 0;
 int prevDefaultTheme = -1;
 
+#ifdef METAMODULE_BUILTIN
 
+extern Plugin *pluginInstance;
+void init_CountModula(Plugin *p) {
+
+#else
+
+Plugin *pluginInstance;
 void init(Plugin *p) {
+
+#endif
+
 	pluginInstance = p;
 
 	defaultTheme = readDefaultIntegerValue("DefaultTheme");
@@ -33,6 +42,8 @@ int getDefaultTheme(bool previous) {
 
 // save the given global count modula settings`
 void saveSettings(json_t *rootJ) {
+	// User dir is not persistant on MM (TODO)
+#ifndef METAMODULE
 	std::string settingsFilename = asset::user("CountModula.json");
 	
 	FILE *file = fopen(settingsFilename.c_str(), "w");
@@ -41,10 +52,14 @@ void saveSettings(json_t *rootJ) {
 		json_dumpf(rootJ, file, JSON_INDENT(2) | JSON_REAL_PRECISION(9));
 		fclose(file);
 	}
+#endif
 }
 
 // read the global count modula settings
 json_t * readSettings() {
+#ifdef METAMODULE
+	return json_object();
+#else
 	std::string settingsFilename = asset::user("CountModula.json");
 	FILE *file = fopen(settingsFilename.c_str(), "r");
 	
@@ -57,6 +72,7 @@ json_t * readSettings() {
 	
 	fclose(file);
 	return rootJ;
+#endif
 }
 
 // read the given default integer value from the global count modula settings file
