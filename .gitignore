@@ -2,3 +2,5 @@
 /dist
 /plugin.dylib
 /plugin.dll
+metamodule/build
+metamodule/metamodule-plugins
