@@ -180,11 +180,14 @@ target_compile_options(CountModula
 
 set_property(TARGET CountModula PROPERTY CXX_STANDARD 20)
 
+if("${INSTALL_DIR}" STREQUAL "")
+    set(INSTALL_DIR ${CMAKE_CURRENT_LIST_DIR}/metamodule-plugins)
+endif()
 
 create_plugin(
-    SOURCE_LIB      CountModula                                       # This is the cmake target name (defined in add_target)
-    PLUGIN_NAME     CountModula                                       # This must match the brand "slug" used in VCV Rack
-    PLUGIN_JSON     ${CMAKE_CURRENT_LIST_DIR}/../plugin.json                         # Path to the plugin.json file used by VCV Rack
-    SOURCE_ASSETS   ${CMAKE_CURRENT_LIST_DIR}/assets                  # Path to the assets/ dir containing the PNGs
-    DESTINATION     ${CMAKE_CURRENT_LIST_DIR}/metamodule-plugins      # Dir where plugin .mmplugin file should be put
+    SOURCE_LIB      CountModula                               # This is the cmake target name (defined in add_target)
+    PLUGIN_NAME     CountModula                               # This must match the brand "slug" used in VCV Rack
+    PLUGIN_JSON     ${CMAKE_CURRENT_LIST_DIR}/../plugin.json  # Path to the plugin.json file used by VCV Rack
+    SOURCE_ASSETS   ${CMAKE_CURRENT_LIST_DIR}/assets          # Path to the assets/ dir containing the PNGs
+    DESTINATION     ${INSTALL_DIR}                            # Dir where plugin .mmplugin file should be put
 )
