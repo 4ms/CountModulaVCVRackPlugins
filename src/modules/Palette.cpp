@@ -1556,6 +1556,11 @@ struct PaletteWidget : ModuleWidget {
 			delete keyContainer;
 		}
 	}
+
+#ifdef METAMODULE
+	// Define custom draw() so that the LED buttons are updated
+	void draw(const DrawArgs& args) override{}
+#endif
 };
 
 Model *modelPalette = createModel<Palette, PaletteWidget>("Palette");

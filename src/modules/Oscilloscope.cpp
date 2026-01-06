@@ -759,6 +759,10 @@ struct OscilloscopeWidget : ModuleWidget {
 			#include "../themes/step.hpp"
 		}
 	}
+#ifdef METAMODULE
+	// Define custom draw() so that the LED buttons are updated
+	void draw(const DrawArgs& args) override{}
+#endif
 };
 
 Model *modelOscilloscope = createModel<Oscilloscope, OscilloscopeWidget>("Oscilloscope");

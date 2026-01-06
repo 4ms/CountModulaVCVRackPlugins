@@ -162,6 +162,10 @@ struct BusRoute2Widget : ModuleWidget {
 		
 		Widget::step();
 	}		
+#ifdef METAMODULE
+	// Define custom draw() so that the LED buttons are updated
+	void draw(const DrawArgs& args) override{}
+#endif
 };
 
 Model *modelBusRoute2 = createModel<BusRoute2, BusRoute2Widget>("BusRoute2");

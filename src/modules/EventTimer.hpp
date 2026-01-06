@@ -399,6 +399,10 @@ struct WIDGET_NAME : ModuleWidget {
 		
 		Widget::step();
 	}	
+#ifdef METAMODULE
+	// Define custom draw() so that the LED buttons are updated
+	void draw(const DrawArgs& args) override{}
+#endif
 };	
 
 Model *MODEL_NAME = createModel<STRUCT_NAME, WIDGET_NAME>(MODULE_NAME);

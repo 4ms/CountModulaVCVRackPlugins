@@ -353,6 +353,10 @@ struct SequencerExpanderTrig8Widget : ModuleWidget {
 		
 		Widget::step();
 	}		
+#ifdef METAMODULE
+	// Define custom draw() so that the LED buttons are updated
+	void draw(const DrawArgs& args) override{}
+#endif
 };
 
 Model *modelSequencerExpanderTrig8 = createModel<SequencerExpanderTrig8, SequencerExpanderTrig8Widget>("SequencerExpanderTrig8");

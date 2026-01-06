@@ -427,6 +427,15 @@ struct STRUCT_NAME : Module {
 			outputs[TRIG_OUTPUTS + r].setVoltage(boolToGate(gate[r] && clock));
 			lights[GATE_LIGHTS + r].setBrightness(boolToLight(gate[r]));
 			lights[TRIG_LIGHTS + r].setBrightness(boolToLight(gate[r] && clock));
+#ifdef METAMODULE
+			// For MetaModule, we need to update the light values here, since onChange() and step() are not called for the widgets
+			for (int s = 0; s < GATESEQ_NUM_STEPS; s++) {
+				auto param_id = STRUCT_NAME::STEP_PARAMS + (r * GATESEQ_NUM_STEPS) + s;
+				auto light_id = STRUCT_NAME::STEP_PARAM_LIGHTS + (r * GATESEQ_NUM_STEPS) + s;
+				lights[light_id].setBrightness(params[param_id].getValue() > 0.5f ? 1 : 0);
+
+			}
+#endif
 		}
 		
 		outputs[END_OUTPUT].setVoltage(boolToGate(oneShotEnded));
@@ -687,6 +696,11 @@ struct WIDGET_NAME : ModuleWidget {
 		
 		Widget::step();
 	}	
+
+#ifdef METAMODULE
+	// Define custom draw() so that the LED buttons are updated
+	void draw(const DrawArgs& args) override{}
+#endif
 };
 
 Model *MODEL_NAME = createModel<STRUCT_NAME, WIDGET_NAME>(MODULE_NAME);

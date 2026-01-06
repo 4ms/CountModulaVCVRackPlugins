@@ -173,6 +173,10 @@ struct MasterResetWidget : ModuleWidget {
 		
 		Widget::step();
 	}		
+#ifdef METAMODULE
+	// Define custom draw() so that the LED buttons are updated
+	void draw(const DrawArgs& args) override{}
+#endif
 };
 
 Model *modelMasterReset = createModel<MasterReset, MasterResetWidget>("MasterReset");

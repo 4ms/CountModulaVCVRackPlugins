@@ -246,6 +246,10 @@ struct BooleanXORWidget : ModuleWidget {
 		
 		Widget::step();
 	}		
+#ifdef METAMODULE
+	// Define custom draw() so that the LED buttons are updated
+	void draw(const DrawArgs& args) override{}
+#endif
 };
 
 Model *modelBooleanXOR = createModel<BooleanXOR, BooleanXORWidget>("BooleanXOR");

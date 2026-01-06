@@ -207,6 +207,10 @@ struct PolyrhythmicGeneratorWidget : ModuleWidget {
 		addParam(createParamCentered<CountModulaLEDPushButton<CountModulaPBLight<GreenLight>>>(Vec(STD_COLUMN_POSITIONS[STD_COL1], STD_ROWS8[STD_ROW8]), module, PolyrhythmicGenerator::MUTEALL_PARAM, PolyrhythmicGenerator::MUTEALL_PARAM_LIGHT));
 		addOutput(createOutputCentered<CountModulaJack>(Vec(STD_COLUMN_POSITIONS[STD_COL1], STD_ROWS8[STD_ROW6]), module, PolyrhythmicGenerator::POLY_OUTPUT));
 	}
+#ifdef METAMODULE
+	// Define custom draw() so that the LED buttons are updated
+	void draw(const DrawArgs& args) override{}
+#endif
 };
 
 Model *modelPolyrhythmicGenerator = createModel<PolyrhythmicGenerator, PolyrhythmicGeneratorWidget>("PolyrhythmicGenerator");
