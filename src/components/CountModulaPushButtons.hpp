@@ -42,10 +42,21 @@ struct CountModulaPBLight : TBase {
 };
 
 // Base for lit buttons
+#ifdef METAMODULE
+// Use VCVLightBezel so the SDK can recognize this as a light+button
+struct CountModulaLitPB : rack::componentlibrary::VCVLightBezel<CountModulaPBLight<GreenLight>> {
+
+	CountModulaLitPB() {
+		// Remove artifacts from VCVLightBezel
+		if (light)
+			removeChild(light);
+		frames.clear();
+#else
 struct CountModulaLitPB : SvgSwitch {
 	ModuleLightWidget* light;
 
 	CountModulaLitPB() {
+#endif
 		momentary = false;
 
 		// no shadow for buttons
