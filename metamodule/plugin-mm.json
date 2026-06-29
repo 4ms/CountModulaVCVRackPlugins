@@ -373,6 +373,50 @@
 		{
 		  "slug": "Oscilloscope",
 		  "name": "Oscilloscope"
+		},
+		{
+		  "slug": "Arpeggiator",
+		  "name": "Super Arpeggiator"
+		},
+		{
+		  "slug": "HyperManiacalLFO",
+		  "name": "Hyper Maniacal LFO"
+		},
+		{
+		  "slug": "Breakout",
+		  "name": "Breakout"
+		},
+		{
+		  "slug": "PolyGateModifier",
+		  "name": "Poly Gate Modifier"
+		},
+		{
+		  "slug": "PolyChances",
+		  "name": "Polyphonic Bernoulli Gate"
+		},
+		{
+		  "slug": "PolyVCSwitch",
+		  "name": "Polyphonic Voltage Controlled Switch"
+		},
+		{
+		  "slug": "PolyVCPolarizer",
+		  "name": "Polyphonic VC Polarizer"
+		},
+		{
+		  "slug": "PolyLogic",
+		  "name": "Polyphonic Boolean Logic Processor"
+		},
+		{
+		  "slug": "PolyG2T",
+		  "name": "gate to Trigger Converter"
+		},
+		{
+		  "slug": "PolyMinMax",
+		  "name": "Polyphonic Min/Max"
+		},
+		{
+		  "slug": "PolyMute",
+		  "name": "Polyphonic Mute"
 		}
     ]
 }
