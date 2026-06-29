@@ -26,7 +26,7 @@ set(MODULE_DIR ${SOURCE_DIR}/modules)
 target_sources(CountModula
     PRIVATE
     ${MODULE_DIR}/AnalogueShiftRegister.cpp
-    # ${MODULE_DIR}/Arpeggiator.cpp #Needs to rectify PORT_MAX_CHANNELS = 4 but ARP steps is 8
+    ${MODULE_DIR}/Arpeggiator.cpp #Needs to rectify PORT_MAX_CHANNELS = 4 but ARP steps is 8
     ${MODULE_DIR}/Attenuator.cpp
     ${MODULE_DIR}/Attenuverter.cpp
     ${MODULE_DIR}/BarGraph.cpp
@@ -45,7 +45,7 @@ target_sources(CountModula
     ${MODULE_DIR}/BooleanOR.cpp
     ${MODULE_DIR}/BooleanVCNOT.cpp
     ${MODULE_DIR}/BooleanXOR.cpp
-    # ${MODULE_DIR}/Breakout.cpp
+    ${MODULE_DIR}/Breakout.cpp
     ${MODULE_DIR}/BurstGenerator.cpp
     ${MODULE_DIR}/BurstGenerator64.cpp
     ${MODULE_DIR}/BusRoute.cpp
@@ -74,8 +74,8 @@ target_sources(CountModula
     ${MODULE_DIR}/GateSequencer16.cpp
     ${MODULE_DIR}/GateSequencer8.cpp
     ${MODULE_DIR}/GatedComparator.cpp
-    #${MODULE_DIR}/HyperManiac.cpp
-    #${MODULE_DIR}/HyperManiacalLFO.cpp
+    ${MODULE_DIR}/HyperManiac.cpp
+    ${MODULE_DIR}/HyperManiacalLFO.cpp
     #${MODULE_DIR}/HyperManiacalLFOExpander.cpp
     #${MODULE_DIR}/LightStrip.cpp
     ${MODULE_DIR}/Mangler.cpp
@@ -102,16 +102,16 @@ target_sources(CountModula
     ${MODULE_DIR}/OffsetGenerator.cpp
     ${MODULE_DIR}/Oscilloscope.cpp
     #${MODULE_DIR}/Palette.cpp
-    # ${MODULE_DIR}/PolyChances.cpp
-    # ${MODULE_DIR}/PolyG2T.cpp
-    # ${MODULE_DIR}/PolyGateModifier.cpp
-    # ${MODULE_DIR}/PolyLogic.cpp
-    # ${MODULE_DIR}/PolyMinMax.cpp
-    # ${MODULE_DIR}/PolyMute.cpp
-    #${MODULE_DIR}/PolyrhythmicGenerator.cpp
+    ${MODULE_DIR}/PolyChances.cpp
+    ${MODULE_DIR}/PolyG2T.cpp
+    ${MODULE_DIR}/PolyGateModifier.cpp
+    ${MODULE_DIR}/PolyLogic.cpp
+    ${MODULE_DIR}/PolyMinMax.cpp
+    ${MODULE_DIR}/PolyMute.cpp
+    {MODULE_DIR}/PolyrhythmicGenerator.cpp
     ${MODULE_DIR}/PolyrhythmicGeneratorMkII.cpp
-    # ${MODULE_DIR}/PolyVCPolarizer.cpp
-    # ${MODULE_DIR}/PolyVCSwitch.cpp
+    ${MODULE_DIR}/PolyVCPolarizer.cpp
+    ${MODULE_DIR}/PolyVCSwitch.cpp
     #${MODULE_DIR}/RackEarL.cpp
     #${MODULE_DIR}/RackEarR.cpp
     ${MODULE_DIR}/RandomAccessSwitch18.cpp

@@ -5,9 +5,9 @@
 
 // Add all Models defined throughout the plugin
 p->addModel(modelAnalogueShiftRegister);	
-#ifndef METAMODULE
+// #ifndef METAMODULE
 p->addModel(modelArpeggiator);	
-#endif
+// #endif
 p->addModel(modelAttenuator);	
 p->addModel(modelAttenuverter);	
 p->addModel(modelBarGraph);	
@@ -28,9 +28,9 @@ p->addModel(modelBooleanAND);
 p->addModel(modelBooleanOR);	
 p->addModel(modelBooleanVCNOT);	
 p->addModel(modelBooleanXOR);	
-#ifndef METAMODULE
+// #ifndef METAMODULE
 p->addModel(modelBreakout);	
-#endif
+// #endif
 p->addModel(modelBurstGenerator);	
 p->addModel(modelBurstGenerator64);	
 p->addModel(modelBusRoute);	
@@ -64,8 +64,8 @@ p->addModel(modelGateDelayMT);
 p->addModel(modelGateModifier);	
 p->addModel(modelGateSequencer16);	
 p->addModel(modelGateSequencer8);	
-#ifndef METAMODULE
 p->addModel(modelHyperManiacalLFO);	
+#ifndef METAMODULE
 p->addModel(modelHyperManiacalLFOExpander);	
 p->addModel(modelLightStrip);	
 #endif
@@ -99,6 +99,7 @@ p->addModel(modelOffsetGenerator);
 p->addModel(modelOscilloscope);	
 #ifndef METAMODULE
 p->addModel(modelPalette);	
+#endif
 p->addModel(modelPolyChances);	
 p->addModel(modelPolyG2T);	
 p->addModel(modelPolyGateModifier);	
@@ -106,11 +107,10 @@ p->addModel(modelPolyLogic);
 p->addModel(modelPolyMinMax);	
 p->addModel(modelPolyMute);	
 p->addModel(modelPolyrhythmicGenerator);	
-#endif
 p->addModel(modelPolyrhythmicGeneratorMkII);	
-#ifndef METAMODULE
 p->addModel(modelPolyVCPolarizer);	
 p->addModel(modelPolyVCSwitch);	
+#ifndef METAMODULE
 p->addModel(modelRackEarLeft);	
 p->addModel(modelRackEarRight);	
 #endif
