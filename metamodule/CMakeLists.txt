@@ -76,7 +76,7 @@ target_sources(CountModula
     ${MODULE_DIR}/GatedComparator.cpp
     ${MODULE_DIR}/HyperManiac.cpp
     ${MODULE_DIR}/HyperManiacalLFO.cpp
-    #${MODULE_DIR}/HyperManiacalLFOExpander.cpp
+    ${MODULE_DIR}/HyperManiacalLFOExpander.cpp
     #${MODULE_DIR}/LightStrip.cpp
     ${MODULE_DIR}/Mangler.cpp
     ${MODULE_DIR}/Manifold.cpp
@@ -108,7 +108,7 @@ target_sources(CountModula
     ${MODULE_DIR}/PolyLogic.cpp
     ${MODULE_DIR}/PolyMinMax.cpp
     ${MODULE_DIR}/PolyMute.cpp
-    {MODULE_DIR}/PolyrhythmicGenerator.cpp
+    ${MODULE_DIR}/PolyrhythmicGenerator.cpp
     ${MODULE_DIR}/PolyrhythmicGeneratorMkII.cpp
     ${MODULE_DIR}/PolyVCPolarizer.cpp
     ${MODULE_DIR}/PolyVCSwitch.cpp

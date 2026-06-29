@@ -221,8 +221,12 @@ struct HyperManiacalLFO : Module {
 	HyperManiacalLFOExpanderMessage dummyExpndrMessage;
 	MegalomaniacControllerMessage	dummyCntrlrMessage;
 	
+#ifdef METAMODULE
+	VoltageControlledOscillator<16, 16, float_4> lfos[2];
+#else
 	VoltageControlledOscillator<8, 8, float_4> lfos[2];
-	
+#endif
+
 	LagProcessor slew;
 	
 	HyperManiacalLFO() {
