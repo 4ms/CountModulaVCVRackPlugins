@@ -48,8 +48,10 @@ struct CountModulaLitPB : rack::componentlibrary::VCVLightBezel<CountModulaPBLig
 
 	CountModulaLitPB() {
 		// Remove artifacts from VCVLightBezel
-		if (light)
+		if (light) {
 			removeChild(light);
+			delete light;
+		}
 		frames.clear();
 #else
 struct CountModulaLitPB : SvgSwitch {
