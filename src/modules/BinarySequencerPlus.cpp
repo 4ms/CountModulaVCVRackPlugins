@@ -177,15 +177,16 @@ struct BinarySequencerPlus : Module {
 				break;
 		}
 
-		std::string buffer;
+		std::ostringstream  buffer;
 		int b = flip ? NUM_DIVS-1 : 0;
 		for (int i = 0; i < NUM_DIVS; i++) {
-			buffer = "Divide by " + std::to_string(outputMask[m][b]);
+			buffer.str("");
+			buffer << "Divide by " << outputMask[m][b];
 			if (configure) {
-				configParam(DIV_PARAMS + i, -10.0f, 10.0f, 0.0f, buffer);
+				configParam(DIV_PARAMS + i, -10.0f, 10.0f, 0.0f, buffer.str());
 			}
 			else {
-				paramQuantities[DIV_PARAMS + i]->name = buffer;
+				paramQuantities[DIV_PARAMS + i]->name = buffer.str();
 			}
 			if (flip) {
 				b--;
