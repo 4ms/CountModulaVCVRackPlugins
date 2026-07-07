@@ -701,12 +701,13 @@ struct Sequencer64Widget : ModuleWidget {
 			menu->addChild(initMenuItem);
 
 			// specific steps
-			std::string buffer;
+			std::ostringstream  buffer;
 			int r = 1;
 			int x = SEQ_NUM_COLS - 1;
 			for (int s = 1; s < SEQ_NUM_STEPS; s += SEQ_NUM_COLS) {
-				buffer = "Row " + std::to_string(r++) + " (steps " + std::to_string(s) + "-" + std::to_string(s + x) + ")";
-				InitOptionMenu *m = createMenuItem<InitOptionMenu>(buffer, RIGHT_ARROW);
+				buffer.str("");
+				buffer << "Row " << r++ << " (steps " << s << "-" << s + x << ")";
+				InitOptionMenu *m = createMenuItem<InitOptionMenu>(buffer.str(), RIGHT_ARROW);
 				m->widget = widget;
 				m->range = s;
 				menu->addChild(m);
@@ -812,12 +813,13 @@ struct Sequencer64Widget : ModuleWidget {
 			menu->addChild(randMenuItem);
 
 			// specific steps
-			std::string buffer;
+			std::ostringstream  buffer;
 			int r = 1;
 			int x = SEQ_NUM_COLS -1;
 			for (int s = 1; s < SEQ_NUM_STEPS; s += SEQ_NUM_COLS) {
-				buffer = "Row " + std::to_string(r++) + " (steps " + std::to_string(s) + "-" + std::to_string(s + x) + ")";
-				RandOptionMenu *m = createMenuItem<RandOptionMenu>(buffer, RIGHT_ARROW);
+				buffer.str("");
+				buffer << "Row " << r++ << " (steps " << s << "-" << s + x << ")";
+				RandOptionMenu *m = createMenuItem<RandOptionMenu>(buffer.str(), RIGHT_ARROW);
 				m->widget = widget;
 				m->range = s;
 				menu->addChild(m);
@@ -945,13 +947,14 @@ struct Sequencer64Widget : ModuleWidget {
 		Menu *createChildMenu() override {
 			Menu *menu = new Menu;
 
-			std::string buffer;
+			std::ostringstream  buffer;
 			int r = 1;
 			int x = SEQ_NUM_COLS -1;
 			for (int d = 1; d < SEQ_NUM_STEPS; d += SEQ_NUM_COLS) {
 				if (d != source) {
-					buffer = "Into row " + std::to_string(r) + " (steps " + std::to_string(d) + "-" + std::to_string(d + x) + ")";
-					CloneOptionMenu *m = createMenuItem<CloneOptionMenu>(buffer, RIGHT_ARROW);
+					buffer.str("");
+					buffer << "Into row " << r << " (steps " << d << "-" << d + x << ")";
+					CloneOptionMenu *m = createMenuItem<CloneOptionMenu>(buffer.str(), RIGHT_ARROW);
 					m->widget = widget;
 					m->source = source;
 					m->dest = d;
@@ -977,12 +980,13 @@ struct Sequencer64Widget : ModuleWidget {
 		Menu *createChildMenu() override {
 			Menu *menu = new Menu;
 
-			std::string  buffer;
+			std::ostringstream  buffer;
 			int r = 1;
 			int x = SEQ_NUM_COLS -1;
 			for (int s = 1; s < SEQ_NUM_STEPS; s += SEQ_NUM_COLS) {
-				buffer = "Row " + std::to_string(r++) + " (steps " + std::to_string(s) + "-" + std::to_string(s + x) + ")";
-				CloneDestMenu *m = createMenuItem<CloneDestMenu>(buffer, RIGHT_ARROW);
+				buffer.str("");
+				buffer << "Row " << r++ << " (steps " << s << "-" << s + x << ")";
+				CloneDestMenu *m = createMenuItem<CloneDestMenu>(buffer.str(), RIGHT_ARROW);
 				m->widget = widget;
 				m-> source = s;
 				menu->addChild(m);
@@ -1078,12 +1082,13 @@ struct Sequencer64Widget : ModuleWidget {
 			menu->addChild(patternMenuItem);
 
 			// specific steps
-			std::string buffer;
+			std::ostringstream  buffer;
 			int r = 1;
 			int x = SEQ_NUM_COLS -1;
 			for (int s = 1; s < SEQ_NUM_STEPS; s += SEQ_NUM_COLS) {
-				buffer = "Row " + std::to_string(r++) + " (steps " + std::to_string(s) + "-" + std::to_string(s + x) + ")";
-				PatternOptionMenu *m = createMenuItem<PatternOptionMenu>(buffer, RIGHT_ARROW);
+				buffer.str("");
+				buffer << "Row " << r++ << " (steps " << s << "-" << s + x << ")";
+				PatternOptionMenu *m = createMenuItem<PatternOptionMenu>(buffer.str(), RIGHT_ARROW);
 				m->widget = widget;
 				m->dest = s;
 				menu->addChild(m);
