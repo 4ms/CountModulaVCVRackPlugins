@@ -417,6 +417,86 @@
 		{
 		  "slug": "PolyMute",
 		  "name": "Polyphonic Mute"
+		},
+		{
+		  "slug": "ClockedRandomGateExpanderCV",
+		  "name": "Clocked Random Gate CV Expander"
+		},
+		{
+		  "slug": "ClockedRandomGateExpanderLog",
+		  "name": "Clocked Random Gate Logic Expander"
+		},
+		{
+		  "slug": "EuclidExpanderCV",
+		  "name": "Euclidean Sequencer Expander"
+		},
+		{
+		  "slug": "FadeExpander",
+		  "name": "Fade-in/Fade-out Expander"
+		},
+		{
+		  "slug": "HyperManiacalLFOExpander",
+		  "name": "Hyper Maniacal LFO Output Expander"
+		},
+		{
+		  "slug": "Megalomaniac",
+		  "name": "Megalomaniac - Hyper Maniacal LFO CV Expander"
+		},
+		{
+		  "slug": "OctetTriggerSequencerCVExpander",
+		  "name": "Octet Trigger Sequencer CV Expander"
+		},
+		{
+		  "slug": "OctetTriggerSequencerGateExpander",
+		  "name": "Octet Trigger Sequencer Gate Expander"
+		},
+		{
+		  "slug": "SequencerChannel8",
+		  "name": "8 Step Sequencer Channel Expander"
+		},
+		{
+		  "slug": "SequencerChannel16",
+		  "name": "16 Step Sequencer Channel Expander"
+		},
+		{
+		  "slug": "SequencerExpanderCV8",
+		  "name": "Sequencer CV Expander"
+		},
+		{
+		  "slug": "SequencerExpanderLOG8",
+		  "name": "Gated Comparator Expander - Gate Logic"
+		},
+		{
+		  "slug": "SequencerExpanderOut8",
+		  "name": "Sequencer Output Expander"
+		},
+		{
+		  "slug": "SequencerExpanderRM8",
+		  "name": "Gated Comparator Expander - Random Melody"
+		},
+		{
+		  "slug": "SequencerExpanderTrig8",
+		  "name": "Sequencer Trigger Expander"
+		},
+		{
+		  "slug": "SequencerExpanderTSG",
+		  "name": "Trigger Sequencer Gate Expander"
+		},
+		{
+		  "slug": "SequencerGates8",
+		  "name": "8 Step Sequencer Gate Output Expander"
+		},
+		{
+		  "slug": "SequencerGates16",
+		  "name": "16 Step Sequencer Gate Output Expander"
+		},
+		{
+		  "slug": "SequencerTriggers8",
+		  "name": "8 Step Sequencer Trigger Output Expander"
+		},
+		{
+		  "slug": "SequencerTriggers16",
+		  "name": "16 Step Sequencer Trigger Output Expander"
 		}
     ]
 }

@@ -38,25 +38,19 @@ p->addModel(modelBusRoute2);
 p->addModel(modelCarousel);	
 p->addModel(modelChances);	
 p->addModel(modelClockDivider);	
-#ifndef METAMODULE
 p->addModel(modelClockedRandomGateExpanderCV);	
 p->addModel(modelClockedRandomGateExpanderLog);	
-#endif
 p->addModel(modelClockedRandomGates);	
 p->addModel(modelComparator);	
 p->addModel(modelCVSpreader);	
 p->addModel(modelGateSequencer16b);	
 p->addModel(modelEuclid);	
-#ifndef METAMODULE
 p->addModel(modelEuclidExpanderCV);	
-#endif
 p->addModel(modelEventArranger);	
 p->addModel(modelEventTimer);	
 p->addModel(modelEventTimer2);	
 p->addModel(modelFade);	
-#ifndef METAMODULE
 p->addModel(modelFadeExpander);	
-#endif
 p->addModel(modelG2T);	
 p->addModel(modelGatedComparator);	
 p->addModel(modelGateDelay);	
@@ -65,8 +59,8 @@ p->addModel(modelGateModifier);
 p->addModel(modelGateSequencer16);	
 p->addModel(modelGateSequencer8);	
 p->addModel(modelHyperManiacalLFO);	
-#ifndef METAMODULE
 p->addModel(modelHyperManiacalLFOExpander);	
+#ifndef METAMODULE
 p->addModel(modelLightStrip);	
 #endif
 p->addModel(modelMangler);	
@@ -77,9 +71,7 @@ p->addModel(modelManualGate);
 p->addModel(modelMasterReset);	
 p->addModel(modelMatrixCombiner);	
 p->addModel(modelMatrixMixer);	
-#ifndef METAMODULE
 p->addModel(modelMegalomaniac);	
-#endif
 p->addModel(modelMiniMix);	
 p->addModel(modelMinimusMaximus);	
 p->addModel(modelMixer);	
@@ -91,10 +83,8 @@ p->addModel(modelMute);
 p->addModel(modelMuteIple);	
 p->addModel(modelNibbleTriggerSequencer);	
 p->addModel(modelOctetTriggerSequencer);	
-#ifndef METAMODULE
 p->addModel(modelOctetTriggerSequencerCVExpander);	
 p->addModel(modelOctetTriggerSequencerGateExpander);	
-#endif
 p->addModel(modelOffsetGenerator);	
 p->addModel(modelOscilloscope);	
 #ifndef METAMODULE
@@ -123,7 +113,6 @@ p->addModel(modelSequenceEncoder);
 p->addModel(modelSequencer16);	
 p->addModel(modelSequencer64);
 p->addModel(modelSequencer8);	
-#ifndef METAMODULE
 p->addModel(modelSequencerChannel16);	
 p->addModel(modelSequencerChannel8);	
 p->addModel(modelSequencerExpanderCV8);	
@@ -136,7 +125,6 @@ p->addModel(modelSequencerGates16);
 p->addModel(modelSequencerGates8);	
 p->addModel(modelSequencerTriggers16);	
 p->addModel(modelSequencerTriggers8);	
-#endif
 p->addModel(modelShepardGenerator);	
 p->addModel(modelShiftRegister16);	
 p->addModel(modelShiftRegister32);	
